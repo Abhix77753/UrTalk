@@ -1,18 +1,39 @@
-const express = require("express");
-const http = require("http");
-const { Server } = require("socket.io");
-
-const app = express();
-const server = http.createServer(app);
-const io = new Server(server);
-
-app.use(express.static(__dirname));
-
-io.on("connection", socket => {
-  socket.on("offer", offer => socket.broadcast.emit("offer", offer));
-  socket.on("answer", answer => socket.broadcast.emit("answer", answer));
-  socket.on("candidate", candidate => socket.broadcast.emit("candidate", candidate));
-  socket.on("chat", msg => socket.broadcast.emit("chat", msg));
+// Email/password login
+app.post('/login', (req, res) => {
+  const { username, password } = req.body;
+  const users = { admin: '12345', user1: 'password' }; // hardcoded
+  if (users[username] && users[username] === password) {
+    req.session.user = { username };
+    res.json({ message: 'Login successful!' });
+  } else {
+    res.json({ message: 'Invalid username or password.' });
+  }
 });
 
-server.listen(3000, () => console.log("🚀 Server running on http://localhost:3000"));
+// Google login (optional)
+passport.use(new GoogleStrategy({
+  clientID: process.env.GOOGLE_CLIENT_ID,
+  clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+  callbackURL: "/auth/google/callback"
+}, (accessToken, refreshToken, profile, done) => done(null, profile)));
+
+app.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
+app.get('/auth/google/callback',
+  passport.authenticate('google', { failureRedirect: '/login.html' }),
+  (req, res) => {
+    req.session.user = req.user;
+    res.redirect('/talkChat.html');
+  }
+);
+
+// Guest login
+app.get('/guest', (req, res) => {
+  req.session.user = { username: 'Guest' };
+  res.redirect('/talkChat.html');
+});
+
+// Logout
+app.get('/logout', (req, res) => {
+  req.session.destroy();
+  res.redirect('/login.html');
+});

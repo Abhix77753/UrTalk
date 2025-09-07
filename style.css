@@ -1,148 +1,27 @@
 body {
   font-family: Arial, sans-serif;
-  margin: 0;
-  background: #f9f9f9;
-  color: #333;
-}
-
-header {
-  display: flex;
-  justify-content: space-between;
-  padding: 12px 20px;
-  background: #fff;
-  border-bottom: 1px solid #ddd;
-}
-
-.logo {
-  font-size: 20px;
-  font-weight: bold;
-  color: #ff6600;
-}
-
-.right {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-#userCount {
-  font-weight: bold;
-  color: #007bff;
-}
-
-/* Toggle switch */
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 40px;
-  height: 20px;
-}
-.switch input { display: none; }
-.slider {
-  position: absolute;
-  cursor: pointer;
-  background-color: #ccc;
-  border-radius: 20px;
-  top: 0; left: 0; right: 0; bottom: 0;
-  transition: .4s;
-}
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 16px; width: 16px;
-  border-radius: 50%;
-  left: 2px; bottom: 2px;
-  background: white;
-  transition: .4s;
-}
-input:checked + .slider {
-  background: #007bff;
-}
-input:checked + .slider:before {
-  transform: translateX(20px);
-}
-
-/* Landing */
-main {
-  text-align: center;
-  padding: 50px 20px;
-}
-.btn-group {
-  margin: 20px 0;
-}
-.btn {
-  padding: 12px 30px;
-  margin: 0 10px;
-  border: none;
-  border-radius: 6px;
-  background: linear-gradient(45deg, #007bff, #00c6ff);
-  color: white;
-  font-size: 18px;
-  cursor: pointer;
-}
-.btn:hover {
-  opacity: 0.9;
-}
-#interestInput {
-  padding: 10px;
-  width: 80%;
-  max-width: 400px;
-  margin-top: 20px;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-}
-
-/* Chat */
-.hidden { display: none; }
-.chat-box {
-  width: 90%;
-  max-width: 500px;
-  margin: 20px auto;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  display: flex;
-  flex-direction: column;
-}
-#messages {
-  height: 300px;
-  overflow-y: auto;
-  padding: 10px;
-}
-.input-row {
-  display: flex;
-}
-.input-row input {
-  flex: 1;
-  padding: 10px;
-  border: none;
-  border-top: 1px solid #ddd;
-}
-.input-row button {
-  padding: 10px;
-  background: #007bff;
-  color: white;
-  border: none;
-}
-.backBtn {
-  margin: 20px;
-  padding: 8px 20px;
-  background: #ff6600;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-/* Video */
-.video-box {
+  background-color: #f0f2f5;
   display: flex;
   justify-content: center;
-  gap: 20px;
-  margin: 20px;
+  align-items: center;
+  height: 100vh;
 }
-video {
-  width: 300px;
-  height: 200px;
-  background: #000;
-  border-radius: 8px;
+
+.login-container {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+input, button {
+  display: block;
+  width: 100%;
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+}
+
+button {
+  cursor: pointer;
 }
