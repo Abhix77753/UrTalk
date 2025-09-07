@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Omegle Clone</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="logo">🌐 <span>Omegle Clone</span></div>
+    <div class="right">
+      <span id="userCount">0+</span>
+      <label class="switch">
+        <input type="checkbox" id="themeToggle">
+        <span class="slider"></span>
+      </label>
+    </div>
+  </header>
+
+  <!-- Landing Section -->
+  <main id="landing">
+    <h2>Talk to strangers with your interests!</h2>
+    <p>Find new friends instantly. Click below to start chatting.</p>
+
+    <div class="btn-group">
+      <button id="textBtn" class="btn">Text</button>
+      <button id="videoBtn" class="btn">Video</button>
+    </div>
+    <input id="interestInput" type="text" placeholder="Add your interests (optional)">
+  </main>
+
+  <!-- Text Chat Window -->
+  <section id="textChat" class="hidden">
+    <div class="chat-box">
+      <div id="messages"></div>
+      <div class="input-row">
+        <input id="msgInput" type="text" placeholder="Type message...">
+        <button id="sendBtn">Send</button>
+      </div>
+    </div>
+    <button class="backBtn">⬅ Back</button>
+  </section>
+
+  <!-- Video Chat Window -->
+  <section id="videoChat" class="hidden">
+    <div class="video-box">
+      <video id="localVideo" autoplay playsinline muted></video>
+      <video id="remoteVideo" autoplay playsinline></video>
+    </div>
+    <button id="startBtn">Start 🎥</button>
+    <button class="backBtn">⬅ Back</button>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
